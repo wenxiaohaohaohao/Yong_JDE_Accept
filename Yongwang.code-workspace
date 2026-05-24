@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.encoding": "utf8",
+    "files.eol": "\r\n",
+    "latex-workshop.latex.rootFile.useSubFile": false,
+    "latex-workshop.latex.outDir": "%DIR%/output",
+    "search.exclude": {
+      "**/.git": true,
+      "**/.venv": true,
+      "**/__pycache__": true,
+      "**/05_paper/output": true
+    }
+  }
+}
+

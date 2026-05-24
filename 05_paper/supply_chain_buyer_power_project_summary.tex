@@ -1,0 +1,553 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+%
+\documentclass[
+  12pt,
+]{ctexart}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Liberation Serif}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Noto Serif CJK SC}
+          \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Noto Serif CJK SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\setstretch{1.25}
+\textbf{供应链金融、买方势力与生产网络中的上游错配}
+
+\textbf{项目故事、文献定位与实证优先研究路线总结}
+
+整理日期：2026年5月24日
+
+\textbf{核心结论}
+
+这个项目现在最稳妥的题目不是``在王勇等文章上再加入 markdown 和 network''，而是：在中国国内生产网络中，下游买方势力或更宽泛的 domestic input-demand wedge 是否压低了上游供应商的需求、现金流和投资；如果是，供应链金融、应收账款融资和弱链补链式信贷支持是否可以被理解为一种网络型二阶最优政策。
+
+当前阶段的正确顺序不是先建大模型，而是先用税调数据和投入产出表建立一条事实链：测度 input-demand wedge → 验证其 buyer-power interpretation → 构造上游暴露度 → 检验上游压力 → 检验优惠信贷或供应链金融是否流向这些 high-exposure upstream sectors。只有事实链成立，后续 welfare model 才有经济学基础。
+
+\textbf{目录}
+
+\begin{quote}
+1. 一、最终项目定位
+
+2. 二、为什么不能直接沿着 Wang 的高 markup 逻辑做
+
+3. 三、与 Wang、Liu、Morlacco、Jones、Peters 的关系
+
+4. 四、政策现实与研究问题的连接方式
+
+5. 五、最终研究假说与机制
+
+6. 六、为什么必须先做实证
+
+7. 七、数据、变量与回归设计
+
+8. 八、若事实链不成立时如何调整
+
+9. 九、政策时间线：2000-2020
+
+10. 十、讨论过程回顾与路线收敛
+
+11. 参考文献与政策来源
+\end{quote}
+
+\section{一、最终项目定位}\label{ux4e00ux6700ux7ec8ux9879ux76eeux5b9aux4f4d}
+
+\textbf{建议题目}
+
+\begin{quote}
+• 中文：供应链金融、买方势力与生产网络中的上游错配：来自中国税调数据的证据。
+
+• 英文：Buyer Power and Supply-Chain Finance in Domestic Production Networks。
+
+• 更政策化版本：Supply-Chain Finance as Second-Best Industrial Policy under Buyer Power。
+\end{quote}
+
+最核心的问题是：当下游企业在国内中间品采购中具有买方势力，或者更一般地存在 input-demand wedge 时，上游供应商是否因为下游需求、账期和现金流压力而处于社会最优下过小的状态？如果存在这种扭曲，面向链上供应商、基础零部件、关键材料和专精特新企业的融资支持是否具有二阶最优含义？
+
+这个题目比``优惠信贷 + 高 markup + markdown + network + welfare decomposition''的菜单式扩展更干净。它把研究对象从``高利润行业为什么得到补贴''转向``供应链金融为什么可能在生产网络中纠正上游弱环节''。
+
+\textbf{最终工作定义}
+
+由于税调数据没有国内企业之间的 buyer-supplier 交易价格和数量，当前不应直接声称``估计了纯粹的国内中间品 markdown''。更稳妥的术语是 domestic intermediate input-demand wedge。其经济解释需要通过下游集中度、买方规模、上游供应商分散度、应收账款压力、账期和融资压力等外部证据来验证。
+
+\section{二、为什么不能直接沿着 Wang 的高 markup 逻辑做}\label{ux4e8cux4e3aux4ec0ux4e48ux4e0dux80fdux76f4ux63a5ux6cbfux7740-wang-ux7684ux9ad8-markup-ux903bux8f91ux505a}
+
+Wang 等文章已经有一个非常清晰的现实和模型故事：在中国，优惠信贷更多流向高 markup 部门；这些高 markup 部门由于产品市场势力而产出偏低，优惠信贷降低有效资本成本，使资源重新配置到高 markup 部门，从而提高 TFP 和福利。该文章使用中国 2009-2020 年税调数据，记录了高 markup 部门获得更大信贷补贴并具有更高 revenue-based productivity 的事实，并建立多部门模型解释这种政策的福利收益。
+
+因此，如果本项目仍以``高 markup 行业获得补贴''为核心事实，就会与 Wang 正面重叠。仅仅在其模型中再加入 production network 或 markdown，很容易被 editor 视为 mechanical extension：模型更复杂，但新问题不够锋利。
+
+项目必须回答一个 Wang 没有回答的问题：政策支持是否不仅流向高 markup 部门，还系统性地流向那些暴露于下游 input-demand wedge 的上游网络关键部门？换言之，政策支持对象是否可以由``自身高 markup''以外的网络暴露度解释？
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{维度}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Wang 等文章}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{本项目最终路线}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+核心政策事实 & 高 markup 部门获得更多优惠信贷 & 供应链金融/优惠信贷是否支持暴露于下游 wedge 的上游部门 \\
+核心扭曲 & 产品市场 output markup 导致高 markup 部门过小 & 下游 buyer power 或 input-demand wedge 压低上游需求与现金流 \\
+政策对象 & 部门层面，主要按 sectoral markup 排序 & 上游供应商、弱链环节、链上中小企业，按 network exposure 排序 \\
+模型逻辑 & 信用补贴降低有效资本成本，扩张高 markup 部门 & 信用或供应链金融缓解上游供应商因下游 wedge 引起的融资和需求不足 \\
+创新风险 & 已有文献已覆盖核心故事 & 如果能证明政策与 upstream exposure 相关，创新更独立 \\
+\end{longtable}
+
+\section{三、与 Wang、Liu、Morlacco、Jones、Peters 的关系}\label{ux4e09ux4e0e-wangliumorlaccojonespeters-ux7684ux5173ux7cfb}
+
+\textbf{1. 与 Wang 等的关系}
+
+本项目应继承 Wang 等的两个资产：第一，税调数据和 credit subsidy 构造方法；第二，优惠信贷可以作为中国工业政策的重要数量化工具。但本项目不能复制其核心机制。Wang 的核心是``高 markup 部门过小，所以补贴高 markup 部门''。本项目的核心应是``上游行业暴露于下游 input-demand wedge 时可能过小，所以链上供应商融资支持可能有二阶最优含义''。
+
+在实证上，Wang 的 markup 变量仍然必须保留，但它应成为重要控制变量和对照机制。只有在控制自身 markup 后，upstream exposure to downstream wedge 仍能解释政策支持，项目才真正区别于 Wang。
+
+\textbf{2. 与 Liu (2019) 的关系}
+
+Liu 的逻辑是：下游金融摩擦降低对中间品的派生需求，扭曲沿生产网络向上游传播，因此补贴上游部门可以具有二阶最优性质。本项目可以借鉴这个结构，但不能声称具有同样的金融摩擦。
+
+本项目的对应结构是：下游 buyer power 或 domestic input-demand wedge 压低其对上游中间品的私人需求，造成上游供应商现金流、投资和进入不足；如果上游行业具有网络关键性，则面向上游供应商的融资支持可能改善资源配置。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{比较项}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Liu (2019)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{本项目}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+下游摩擦 & 金融约束、融资摩擦 & 买方势力、账期压力或 input-demand wedge \\
+对上游影响 & 下游对中间品需求不足 & 下游采购/付款/需求关系压低上游现金流和扩张 \\
+政策含义 & 补贴上游可能二阶最优 & 供应链金融或上游弱链支持可能二阶最优 \\
+关键识别 & 生产网络中的上游性 & 下游 wedge 经 IO 表映射到上游 exposure \\
+\end{longtable}
+
+\textbf{3. 与 Morlacco and Guigue 的关系}
+
+Morlacco and Guigue 的贡献是提供 input-market buyer power 的测度框架。其核心公式是：input markdown 等于 input revenue elasticity 除以 input expenditure share，即 ψ = θ\^{}r / α。该方法的优点是不需要假设另一类投入市场完全竞争，也不仅适用于进口中间品；文章还报告了 domestically produced intermediates 的平均 markdown。
+
+但本项目不能简单复制 Morlacco。税调数据没有国内中间品的企业-企业交易价格、数量和来源结构，也缺少产品层面的需求估计。因此，本项目应称为``in the spirit of Morlacco''，构造 domestic intermediate input-demand wedge，并通过验证来支持 buyer-power interpretation。
+
+\textbf{4. 与 Jones 的关系}
+
+Jones 的作用是提供 production network 的放大机制。中间品是被生产出来并在生产中完全消耗的投入，类似一种快速折旧的资本。微观层面的错配如果发生在中间品部门，会通过投入产出联系被放大。因此，本项目不能只看局部 buyer power，而要问：一个下游 wedge 通过上游 exposure 如何影响更多部门。
+
+\textbf{5. 与 Peters 和 markup-misallocation 文献的关系}
+
+Peters 强调 markups 可以内生形成，并导致 misallocation、firm dynamics 和 growth 的相互作用。这对本项目的启示是：不要把所有市场势力都当作外生常数，也不要低估 markup/markdown 对配置的影响。但当前项目一年内不宜进入完整动态 endogenous markup 模型。Peters 更适合作为文献背景，说明市场势力是错配来源之一，而非本项目的建模模板。
+
+\section{四、政策现实与研究问题的连接方式}\label{ux56dbux653fux7b56ux73b0ux5b9eux4e0eux7814ux7a76ux95eeux9898ux7684ux8fdeux63a5ux65b9ux5f0f}
+
+必须强调：供应链金融、应收账款融资、补链强链政策本身不能证明它们是由 markdown 导致的。政策文件说明的是更宽泛的事实：上下游交易关系中存在融资、支付、账期、抵押品、信息和弱链瓶颈等摩擦。这些摩擦可能来自金融约束，也可能来自信息不对称、合同执行、供应链韧性、技术外部性或 buyer power。
+
+所以文章不能写``中国政策是为了纠正 markdown''。更严谨的写法是：中国供应链金融政策揭示了政策制定者对 buyer-supplier relationships 内部摩擦的关注；本文将 domestic input-demand wedge 作为其中一个可测度、可进入福利分析的机制，并检验它是否解释政策支持的流向。
+
+\textbf{政策与机制的正确连接}
+
+\begin{quote}
+• 应收账款融资、保理、订单融资、仓单融资不是普通资本补贴，而是建立在上下游交易关系上的融资工具。
+
+• 大企业拖欠中小企业款项、付款方确权、核心企业信用传递等政策语言，是 buyer power 或 payment friction 的现实制度表现，但不等于纯 markdown。
+
+• 基础零部件、关键材料、工业软件、专精特新等政策对象，体现了对生产网络中弱链和关键上游投入的关注。
+
+• 因此，政策事实提供 broad motivation；input-demand wedge 提供可测度机制；生产网络提供传导和福利映射。
+\end{quote}
+
+\textbf{可以直接写进引言的谨慎表述}
+
+这些政策文件并不说明供应链金融是为了纠正 markdown 而设计的。它们揭示的是一个更宽泛的政策关切：上下游交易关系内部存在融资与支付摩擦。这些摩擦可能来自抵押品不足、信息不对称、账期拖欠，也可能来自下游核心企业的买方势力。本文的贡献不是假定所有这些摩擦都等于 markdown，而是在其中识别一个可测度的机制，即与买方势力相关的国内中间品需求楔子，并研究该楔子嵌入生产网络后，是否能够解释供应链金融和上游弱环节支持的配置逻辑与福利效应。
+
+\section{五、最终研究假说与机制}\label{ux4e94ux6700ux7ec8ux7814ux7a76ux5047ux8bf4ux4e0eux673aux5236}
+
+\textbf{核心假说}
+
+下游行业如果具有较强 domestic input-demand wedge，则它对上游中间品的私人需求、付款条件和现金流传导可能偏离社会最优。暴露于这些下游行业的上游部门，尤其是链上中小企业和关键基础环节，可能表现出更高应收账款压力、更弱现金流、更低投资率、更高融资成本或更高僵尸比例。若优惠信贷或供应链金融更多流向这些上游部门，则说明政策支持不只是 Wang 式 high-markup allocation，还包含 production-network exposure 逻辑。
+
+\textbf{机制链条}
+
+Downstream buyer power / input-demand wedge → upstream demand and payment pressure → upstream cash-flow and investment constraints → network bottleneck → supply-chain-oriented credit support → possible second-best welfare improvement.
+
+注意，input-demand wedge 对应的不仅是价格 markdown，也可能包含账期拖欠、付款延迟、核心买方占用资金和交易关系中的议价不对称。因此实证中的命名应比理论中的 markdown 更宽。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{概念}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{模型表达}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{现实对应}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{税调可观测变量}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Output markup & p = μ MC & 企业产品市场势力、价格高于边际成本 & 营业收入、营业成本、中间投入、生产函数估计 \\
+Input-demand wedge & MRP = ψ P & 采购端买方势力、账期压力、交易条件不对称 & 中间投入份额、revenue elasticity、应付/应收账款 \\
+Upstream exposure & Σ\_d ω\_\{u→d\}(ψ\_d - 1) & 上游行业暴露于强势下游买方 & 税调行业数据 + 投入产出表 \\
+Upstream stress & cashflow/investment response & 供应商现金流紧、投资弱、融资成本高 & 应收账款、现金流、财务费用、投资、僵尸指标 \\
+Policy support & subsidy or preferential credit & 优惠信贷、供应链金融、专精特新等支持 & 财务费用、负债、利息支出、政策标签 \\
+\end{longtable}
+
+\section{六、为什么必须先做实证}\label{ux516dux4e3aux4ec0ux4e48ux5fc5ux987bux5148ux505aux5b9eux8bc1}
+
+目前最大风险不是模型写不出来，而是机制未被事实支持。政策文件不能证明政策是因为 markdown；税调数据也不能直接证明国内中间品 markdown。因此，必须先回答三个前置问题：
+
+\begin{quote}
+1. 能否在税调数据中构造合理的 domestic input-demand wedge？
+
+2. 这个 wedge 是否像 buyer power，而不是纯粹的质量差异、价格测度误差、融资约束或技术异质性？
+
+3. 政策支持是否更多流向暴露于下游 wedge 的上游行业，而不仅仅是流向自身高 markup 行业？
+\end{quote}
+
+只有这三点成立，后续才适合建立结构模型和 welfare decomposition。否则，项目应转向金融摩擦、弱链补链或网络外部性，而不是强行做 markdown。
+
+\textbf{实证优先的好处}
+
+\begin{quote}
+• 避免把政策文件过度解释为 markdown 证据。
+
+• 避免在测度对象不清楚时建立过大的多行业模型。
+
+• 明确区分 Wang 的 high markup 机制和本文的 upstream exposure 机制。
+
+• 为后续 welfare model 提供 sufficient-statistic 式的事实基础。
+
+• 如果事实链不成立，可以尽早转向其他更可信路线。
+\end{quote}
+
+\section{七、数据、变量与回归设计}\label{ux4e03ux6570ux636eux53d8ux91cfux4e0eux56deux5f52ux8bbeux8ba1}
+
+\textbf{1. 税调数据可用变量与用途}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{变量类别}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{可用变量}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{项目用途}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+企业基本信息 & 统一社会信用代码、行业代码、地区、企业规模、登记注册类型、央企/上市公司代码 & 构造企业面板、行业/地区固定效应、所有制与规模控制 \\
+财务报表 & 资产、负债、所有者权益、营业收入、营业成本、利润、费用、现金流 & 构造 markup、盈利能力、融资压力、投资与现金流指标 \\
+税收缴纳 & 增值税销项、进项、所得税、其他税费 & 可辅助测度收入、投入采购、税收优惠与政策暴露 \\
+人员信息 & 职工人数、工资薪酬、社保缴纳 & 劳动投入、工资水平、劳动力质量控制 \\
+生产经营 & 总产值、主营业务收入、含税收入、库存、在手订单、实物投资 & 生产函数估计、订单需求、库存压力、投资率 \\
+资产与负债细项 & 应收账款、应付账款、短期/长期负债、财务费用、利息支出 & 账期压力、供应链融资需求、credit subsidy 构造 \\
+\end{longtable}
+
+\textbf{2. 第一组事实：复刻 Wang}
+
+首先应复刻 Wang 的核心事实：高 markup 行业是否在税调数据中获得更多信用补贴。企业层面可构造 output markup，行业层面用销售权重或 harmonic mean 聚合。信用补贴可用有效利率低于基准利率的程度衡量：Subsidy = 1 - EIR / RequiredRate。若税调中只有财务费用和总负债，变量会较粗，需要用不同债务口径做稳健性。
+
+基准回归：Subsidy\_\{i,s,t\} = β μ\_\{s,t-1\} + X\_\{i,s,t-1\} + α\_s + δ\_t + ε\_\{i,s,t\}。
+
+\textbf{3. 第二组事实：构造 domestic input-demand wedge}
+
+在 Morlacco 思路下，input wedge 可写为 ψ\^{}X\_\{i,t\} = θ\^{}\{X,r\}\_\{i,t\} / α\^{}X\_\{i,t\}。其中 α\^{}X 是中间投入支出占收入份额，θ\^{}\{X,r\} 是中间投入对收入的 revenue elasticity。由于税调数据通常没有国内中间品物理数量和价格，这个变量应命名为 domestic intermediate input-demand wedge，而不是纯 markdown。
+
+可估计 revenue function：r\_\{i,t\} = f(k\_\{i,t\}, l\_\{i,t\}, x\_\{i,t\}) + ω\_\{i,t\} + ε\_\{i,t\}。若使用 translog，则 θ\^{}\{X,r\}\_\{i,t\} 可由估计参数和企业投入水平计算。
+
+\textbf{4. 第三组事实：验证 buyer-power interpretation}
+
+核心验证不是 wedge 的均值大小，而是它是否与买方势力基础变量同向。建议检验：
+
+\begin{quote}
+• 下游行业集中度越高，ψ\^{}X 是否越高；
+
+• 下游平均企业规模越大，ψ\^{}X 是否越高；
+
+• 上游供应商越分散，暴露于该下游的交易压力是否越强；
+
+• ψ\^{}X 是否与应收账款/销售、应付账款周转、现金流压力相关；
+
+• 控制自身 TFP、资本密集度、工资、SOE share、出口份额、地区和年份后关系是否仍存在。
+\end{quote}
+
+\textbf{5. 第四组事实：构造上游暴露度}
+
+下游 wedge 必须通过投入产出表映射到上游。推荐暴露度定义：Exposure\_\{u,t\} = Σ\_d ω\_\{u→d,t\}(ψ\^{}X\_\{d,t\} - 1)。其中 u 是上游行业，d 是下游行业，ω\_\{u→d,t\} 是上游 u 的产出流向下游 d 的权重，来自投入产出表或行业使用表。
+
+这个 exposure 是连接 markdown 与 production network 的关键变量。若没有这一步，政策支持上游和下游 wedge 之间没有经济学桥梁。
+
+\textbf{6. 第五组事实：上游压力与政策流向}
+
+检验上游压力：Stress\_\{u,t\} = β Exposure\_\{u,t-1\} + controls + α\_u + δ\_t + ε\_\{u,t\}。其中 Stress 可包括应收账款/销售、经营现金流/资产、投资率、财务费用率、僵尸比例、退出率。
+
+检验政策流向：Subsidy\_\{i,u,t\} = β Exposure\_\{u,t-1\} + γ μ\_\{u,t-1\} + λ Centrality\_u + X\_\{i,u,t-1\} + α\_u + δ\_t + ε\_\{i,u,t\}。如果 β\textgreater0 且在控制自身 markup 后仍稳健，才能说政策支持不只是 Wang 式高 markup 逻辑，还与上游暴露于下游 input-demand wedge 有关。
+
+\textbf{7. 最先应该产出的五张表}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{表格}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{目的}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{通过标准}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Table 1 & 复刻 Wang：markup 与 credit subsidy & 高 markup 行业获得更多优惠信贷，结果方向与 Wang 一致 \\
+Table 2 & input-demand wedge 分布 & 数值分布合理，行业异质性存在，无明显机械异常 \\
+Table 3 & wedge validation & wedge 与下游集中度、买方规模、账期压力相关 \\
+Table 4 & upstream exposure and stress & 暴露于高-wedge 下游的上游行业现金流/投资/账款压力更强 \\
+Table 5 & policy support and exposure & 控制自身 markup 后，政策支持仍与 upstream exposure 显著相关 \\
+\end{longtable}
+
+\section{八、若事实链不成立时如何调整}\label{ux516bux82e5ux4e8bux5b9eux94feux4e0dux6210ux7acbux65f6ux5982ux4f55ux8c03ux6574}
+
+这个项目必须预设可被证伪的分岔路线。不同结果对应不同文章。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{实证结果}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{应采取的路线}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{解释}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+政策与 upstream exposure 显著相关 & Buyer Power + Supply-Chain Finance 主线 & 最理想，说明政策可能针对生产网络中的买方势力暴露 \\
+政策与 network centrality 相关，但与 wedge 无关 & Weak Links in Production Networks & 重点转为网络关键环节与补链强链 \\
+政策与融资约束相关，但与 wedge 无关 & Supply-Chain Finance and Networked Financial Frictions & 主机制是上游融资摩擦，不是 markdown \\
+政策主要与自身 markup 相关 & Wang 扩展路线 & 说明政策现实更接近 high markup sectors，创新性弱一些 \\
+wedge 与 buyer-power primitives 无关 & 不应称为 buyer power/markdown & 只能作为 input-demand wedge 或测度练习 \\
+\end{longtable}
+
+这也是为什么当前阶段不能先写 full welfare model。模型应服务于事实，而不是替代事实。
+
+\section{九、政策时间线：2000-2020}\label{ux4e5dux653fux7b56ux65f6ux95f4ux7ebf2000-2020}
+
+以下政策不是 markdown 的直接证明，而是 buyer-supplier relationships 内部融资与支付摩擦的制度背景。最贴合本文机制的是 2016-2017 年应收账款融资、供应链金融和供应商融资政策，以及 2020 年款项支付和供应链金融规范政策。
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{时间}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{政策/事件}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{与本文的关系}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2003 & 《中小企业促进法》实施 & 中小企业融资支持的法律基础，尚未明确供应链金融逻辑 \\
+2007 & 中国人民银行《应收账款质押登记办法》 & 将应收账款作为可质押融资资产进行制度化，奠定交易关系资产融资基础 \\
+2009 & 国务院《关于进一步促进中小企业发展的若干意见》 & 提出动产、应收账款、仓单等融资方式，缓解中小企业抵质押不足 \\
+2012 & 商务部商业保理试点：天津滨海新区、上海浦东新区等 & 保理基于应收账款转让，是供应商融资的重要市场化工具 \\
+2013 & 中征应收账款融资服务平台上线试运行 & 降低应收账款融资信息摩擦，形成全国性金融基础设施 \\
+2014 & 银监会《商业银行保理业务管理暂行办法》 & 将银行保理业务纳入监管框架 \\
+2015 & 《中国制造2025》 & 强调工业``四基''，对应网络关键上游弱环节 \\
+2016 & 人民银行等八部委《关于金融支持工业稳增长调结构增效益的若干意见》 & 明确``大力发展应收账款融资''，提出解决大企业拖欠中小微企业资金、帮助中小企业供应商融资 \\
+2016 & 《工业强基工程实施指南（2016-2020年）》 & 强调核心基础零部件和关键基础材料，支持弱链上游环节 \\
+2017 & 七部门《小微企业应收账款融资专项行动工作方案（2017-2019年）》 & 直接对应链上小微供应商融资、盘活应收账款 \\
+2017 & 国务院办公厅《关于积极推进供应链创新与应用的指导意见》 & 鼓励商业银行和供应链核心企业建立供应链金融服务平台，为上下游中小微企业提供融资渠道 \\
+2018 & 商务部等八部门供应链创新与应用试点 & 以城市和企业试点推动供应链金融、产业协同和真实交易融资 \\
+2018 & 工信部专精特新``小巨人''培育 & 聚焦基础零部件、关键材料等细分上游关键环节 \\
+2019 & 银保监会《关于推动供应链金融服务实体经济的指导意见》 & 要求依托核心企业和真实交易，为上下游提供融资、结算和现金管理 \\
+2020 & 《保障中小企业款项支付条例》 & 明确机关、事业单位和大型企业不得拖欠中小企业款项；禁止利用优势地位迟延支付 \\
+2020 & 八部门《关于规范发展供应链金融 支持供应链产业链稳定循环和优化升级的意见》 & 将供应链金融定位于服务供应链产业链完整稳定、优化升级与实体经济 \\
+\end{longtable}
+
+\section{十、讨论过程回顾与路线收敛}\label{ux5341ux8ba8ux8bbaux8fc7ux7a0bux56deux987eux4e0eux8defux7ebfux6536ux655b}
+
+这部分总结我们在不同路线之间的转换，以及为什么最终收敛到``实证优先 + domestic input-demand wedge + upstream exposure''的题目。
+
+\begin{quote}
+1. 初始想法是：在 Wang 的优惠信贷和高 markup 行业补贴框架上，加入上游中间品 markdown、production network、多行业模型和 welfare decomposition。
+
+2. 第一轮判断是：这个想法有潜力，但作为 JIE/AEJ 项目不能成为``模块堆叠''。必须找到一个 Wang 没有回答的新机制。
+
+3. 随后澄清：Wang 的政策现实不是上下游概念，而是高 markup 行业获得更多信用补贴。因此，如果仅加 network，创新不足；必须说明加入 input-side distortion 后政策排序如何改变。
+
+4. 进一步讨论后发现，``高 markup + high network centrality + low rent extraction''这种表述太粗。应改为：政策价值取决于 output wedge、input-demand wedge、network exposure、财政成本和选择扭曲。
+
+5. 你指出当前不引入贸易，并强调 Monica 也估计国内中间品 markdown。于是项目从 imported-input buyer power 和 terms-of-trade channel 转向 domestic intermediate input-demand wedge 和 domestic production network。
+
+6. 接着讨论中国政策现实：供应链金融、应收账款融资、订单/仓单融资、补链强链、基础零部件和专精特新等政策，与 buyer-supplier friction 有关，但不能直接证明是 markdown。
+
+7. 关键转折是：政策文件只能提供 broad motivation，不能当作 markdown 的证据。因此必须先从实证入手，检验政策支持是否与暴露于下游 input-demand wedge 的上游行业相关。
+
+8. 最后结合税调数据变量，明确了可行性边界：税调数据足够复刻 Wang、构造 credit subsidy、账款压力、投资和融资压力；但不能直接恢复纯 domestic markdown。因此应先构造 input-demand wedge，并通过 buyer-power primitives 做验证。
+\end{quote}
+
+\textbf{最终收敛的题目逻辑}
+
+不是``中国政策直接纠正 markdown''，而是：``中国供应链金融和弱链支持政策揭示了上下游交易关系中的融资与支付摩擦；本文在这一宽泛政策背景下，检验 domestic input-demand wedge 这一可测度机制是否存在、是否具有 buyer-power interpretation、是否通过生产网络压低上游供应商，并是否解释优惠信贷或供应链金融的政策流向。''
+
+\section{十一、下一步工作清单}\label{ux5341ux4e00ux4e0bux4e00ux6b65ux5de5ux4f5cux6e05ux5355}
+
+\begin{quote}
+1. 清理税调数据，建立 2000-2020 企业面板，并确认关键变量：行业代码、营业收入、营业成本、中间投入、工资、职工人数、固定资产、负债、财务费用、利息支出、应收账款、应付账款、现金流、投资。
+
+2. 复刻 Wang 的 markup 和 credit subsidy 构造，先在 2009-2020 样本内对齐其核心事实。
+
+3. 估计 revenue production function，构造 domestic intermediate input-demand wedge，先报告分布和行业异质性。
+
+4. 用下游集中度、企业规模、SOE share、供应商分散度、应收账款/销售、账期等变量验证 wedge 是否像 buyer power。
+
+5. 将下游 wedge 通过投入产出表映射到上游行业 exposure。
+
+6. 检验 exposure 是否解释上游压力：应收账款、现金流、投资率、融资成本、退出和僵尸比例。
+
+7. 检验 exposure 是否解释政策支持或 credit subsidy，并严格控制自身 markup、network centrality、行业和年份固定效应。
+
+8. 事实链成立后，再建立静态多部门生产网络模型，做 policy incidence 和 welfare decomposition。
+\end{quote}
+
+\section{参考文献与政策来源}\label{ux53c2ux8003ux6587ux732eux4e0eux653fux7b56ux6765ux6e90}
+
+\textbf{论文与工作论文}
+
+\begin{quote}
+• Chen, Kaiji, Yuxuan Huang, Xuewen Liu, Zhikun Lu, and Yong Wang. 2026. ``Preferential Credit Policy with Sectoral Markup Heterogeneity.'' Manuscript.
+
+• Liu, Ernest. 2019. ``Industrial Policies in Production Networks.'' Quarterly Journal of Economics, 134(4): 1883-1948.
+
+• Morlacco, Monica, and Etienne Guigue. 2024. ``Market Power in Input Markets: Theory and Evidence from French Manufacturing.'' Preliminary manuscript.
+
+• Jones, Charles I. 2011. ``Intermediate Goods and Weak Links in the Theory of Economic Development.'' American Economic Journal: Macroeconomics, 3(2): 1-28.
+
+• Jones, Charles I. 2011. ``Misallocation, Economic Growth, and Input-Output Economics.'' World Congress of the Econometric Society paper.
+
+• Peters, Michael. 2020. ``Heterogeneous Markups, Growth, and Endogenous Misallocation.'' Econometrica, 88(5): 2037-2073.
+
+• De Loecker, Jan, and Frederic Warzynski. 2012. ``Markups and Firm-Level Export Status.'' American Economic Review, 102(6): 2437-2471.
+
+• Bond, Stephen, Arshia Hashemi, Greg Kaplan, and Piotr Zoch. 2021. ``Some Unpleasant Markup Arithmetic.'' Journal of Monetary Economics, 121: 1-14.
+\end{quote}
+
+\textbf{政策来源（节选）}
+
+\begin{quote}
+• 中国人民银行：《应收账款质押登记办法》，2007/2008，司法部法规库：https://www.moj.gov.cn/pub/sfbgw/flfggz/flfggzbmgz/200805/t20080529\_144543.html
+
+• 人民银行等八部委：《关于金融支持工业稳增长调结构增效益的若干意见》，2016，国务院新闻办：https://www.scio.gov.cn/xwfb/gwyxwbgsxwfbh/wqfbh\_2284/2016n\_8740/2016n02y25r/xgzc\_8835/202207/t20220715\_191739.html
+
+• 国务院办公厅：《关于积极推进供应链创新与应用的指导意见》，2017，国家卫生健康委转载：https://www.nhc.gov.cn/bgt/gwywj2/201710/cff81930e4884f158c8ef9150066daf7.shtml
+
+• 商务部等8部门：《关于开展供应链创新与应用试点的通知》，2018，商务部：https://www.mofcom.gov.cn/gztz/art/2018/art\_307a699ed071497b8104d33b86058258.html
+
+• 国务院：《保障中小企业款项支付条例》，2020，生态环境部转载：https://www.mee.gov.cn/zcwj/gwywj/202007/t20200720\_790021.shtml
+
+• 人民银行等八部门：《关于规范发展供应链金融 支持供应链产业链稳定循环和优化升级的意见》，2020，国务院新闻办：https://www.scio.gov.cn/xwfb/gwyxwbgsxwfbh/wqfbh\_2284/2020n\_4408/2020n10y23rsw/wjxgzc\_5431/202207/t20220716\_228078.html
+\end{quote}
+
+\end{document}

@@ -1,0 +1,69 @@
+# Operating system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor files
+.vscode/
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+scripts/engine_paths.local.ps1
+config/*.local.*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Stata
+*.smcl
+*.stswp
+*.tmp
+
+# MATLAB
+*.asv
+*.m~
+*.mex*
+slprj/
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.fdb_latexmk
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Paper build output
+05_paper/main.pdf
+05_paper/output/*
+!05_paper/output/.gitkeep
+
+# Data policy: keep folder structure, do not version data by default
+02_data/raw/*
+02_data/intermediate/*
+02_data/processed/*
+!02_data/**/.gitkeep
+!02_data/**/README.md
+
+# Logs and temporary outputs
+04_results/logs/*
+!04_results/logs/.gitkeep
