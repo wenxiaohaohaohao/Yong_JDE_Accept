@@ -13,10 +13,10 @@
 - `01_literature/Market_Power_Inputs_2023.pdf`
 - `01_literature/markupsmisallocation.pdf`
 - `01_literature/shanghai200.pdf`
-- `05_paper/supply_chain_buyer_power_project_summary.pdf`
-- `05_paper/supply_chain_buyer_power_project_summary.tex`
+- `06_notes/supply_chain_buyer_power_project_summary.pdf`
+- `06_notes/supply_chain_buyer_power_project_summary.tex`
 
-注意：`05_paper/supply_chain_buyer_power_project_summary.tex` 目前在终端读取时出现编码异常。为避免进一步破坏，暂时只把它作为既有参考材料保留；新的论文入口是 `05_paper/main.tex`。
+注意：`06_notes/supply_chain_buyer_power_project_summary.tex` 目前在终端读取时出现编码异常。为避免进一步破坏，暂时只把它作为既有参考材料保留；新的论文入口是 `05_paper/main.tex`。
 
 ## 目录结构
 
