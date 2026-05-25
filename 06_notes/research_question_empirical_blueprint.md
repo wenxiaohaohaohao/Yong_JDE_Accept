@@ -263,6 +263,12 @@ psi^X_{d,t}
 
 ### Table 4：upstream exposure and upstream stress
 
+Data Feasibility Audit, 2026-05-25：
+
+- 若使用中征应收款融资服务平台数据，当前可确认的弱版本变量是 `SCF_access_i_t` / `ZZSC_i_t`，表示企业是否加入中征平台，即 `platform access`。
+- 只有在完整数据包含融资日期、融资金额、债权人、债务人或核心企业字段时，才能构造 `SCF_amount_i_t` 并讨论 `actual financing`。
+- 当前本地样本只有企业名单和资金方名单，不能把“平台注册名单”解释为“供应链金融实际流向”。
+
 问题：
 
 > 暴露于高-wedge 下游买方的上游企业是否现金流、账期和投资压力更强？
@@ -367,6 +373,12 @@ Outcome_{i,u,t}
 
 ### Table 6B：trade-off / payment persistence
 
+Data Feasibility Audit, 2026-05-25：
+
+- `SCF_access_i_t` 只能用于检验加入平台后的 payment persistence 或应收账款压力变化，不能代表企业实际获得的融资金额。
+- 若完整中征数据没有债权人-债务人关系或核心企业字段，Table 6B 不应使用 `buyer-supplier financing network` 表述。
+- 若完整中征数据包含逐笔融资交易，才可以把 `SCF_amount_i_t` 与 `ar_days_i_t`、`buyer_dependence_i_t`、`payment_persistence_i_t` 联合用于 trade-off 检验。
+
 问题：
 
 > 政策支持是否缓解融资和投资压力，同时让账期占用、供应商依赖或低效率存活持续存在？
@@ -459,7 +471,28 @@ wedge -> exposure -> upstream stress -> credit targeting -> firm outcomes
 
 如果没有 Table 6，文章会停留在政策配置或诊断层面。
 
-## 10. 与现有代码目录的映射
+## 10. Data Feasibility Audit, 2026-05-25
+
+本轮数据可行性核查的完整记录见 `06_notes/data_feasibility_audit.md`。当前结论如下。
+
+| 数据源 | 核实来源 | 对本项目的作用 | 当前状态 |
+|---|---|---|---|
+| National Tax Survey | `https://www.cnopendata.com/data/m/large-dedicated/Tax-Survey.html`；Wang 等文献 | 主数据路线；支持 firm-year 财务、credit subsidy、应收账款、投资、R&D 或新产品变量 | `pending full variable dictionary` |
+| 国家投入产出表 | `https://data.stats.gov.cn/dg/website/page.html#/pc/national/home` | 构造 `z_d_u`、`omega_u_to_d`、`upstream_exposure_u_t` | `confirmed` |
+| 税收调查企业专利及引用被引用数据 | `https://www.cnopendata.com/data/tax-patent.html` | Table 6A 的 innovation outcome 候选来源 | `pending full variable dictionary` |
+| 中征应收款融资服务平台数据 | `D:\working_paper\Yongwang\02_data\raw\中征应收款融资服务平台数据`；`D:\working_paper\Yongwang\01_literature\DownPdf.pdf` | Table 4 / Table 5 / Table 6B 的 candidate SCF proxy | `pending full variable dictionary` |
+
+中征平台数据必须分层使用：
+
+| 版本 | 可构造变量 | 解释边界 |
+|---|---|---|
+| 当前本地样本 | 企业名单、资金方名单、地区 | 只能识别平台参与主体；不能构造 firm-year treatment |
+| 最低可用版本 | `SCF_access_i_t` / `ZZSC_i_t`、`scf_join_year_i` | 表示 platform access，不等于 actual financing |
+| 最强版本 | `SCF_amount_i_t`、融资日期、债权人、债务人或核心企业 | 可讨论 actual financing 和 buyer-supplier financing relationship |
+
+因此，当前项目可以把中征平台数据写为 `candidate SCF proxy`，但暂时不能写成 `actual SCF flow`、`financing amount received` 或 `buyer-supplier financing network`。
+
+## 11. 与现有代码目录的映射
 
 | 任务 | 文件 |
 |---|---|
@@ -470,7 +503,7 @@ wedge -> exposure -> upstream stress -> credit targeting -> firm outcomes
 | Table 1-6 回归和导出 | `03_code/stata/05_regressions.do` |
 | 变量定义维护 | `03_code/shared/variable_dictionary.md` |
 
-## 11. 近期执行顺序
+## 12. 近期执行顺序
 
 1. 明确税调数据中收入、中间投入、劳动、资本、债务、财务费用、应收账款、应付账款、投资、R&D、专利或新产品变量是否可用。
 2. 构造 Wang 式 `markup` 和 `credit_subsidy`，复刻 Table 1。
@@ -481,7 +514,7 @@ wedge -> exposure -> upstream stress -> credit targeting -> firm outcomes
 7. 检验 credit subsidy 是否响应 exposure，并控制自身 markup，生成 Table 5。
 8. 若 Table 4-5 支持机制，进入 Table 6A-6B，检验政策效果和 trade-off。
 
-## 12. 当前结论
+## 13. 当前结论
 
 当前项目值得继续推进，但必须用谨慎语言和六层证据链。
 
