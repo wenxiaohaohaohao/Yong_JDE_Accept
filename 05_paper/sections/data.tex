@@ -1,4 +1,10 @@
 \section{Data}
 
-This section should describe data sources, sample construction, variable definitions, and the mapping between firms, sectors, and upstream exposure.
+This section will describe the tax survey panel, financial statement variables, industry classification, input-output tables, and the concordance between firm industries and IO industries.
 
+The main variable definitions are fixed in the shared variable dictionary. The key objects are the downstream wedge \(\psi^X_{d,t}\), the IO transaction \(Z_{d,u}\), the upstream sales-destination weight \(\omega_{u \to d}\), and the upstream exposure measure
+\[
+  Exposure_{u,t} = \sum_d \omega_{u \to d}(\psi^X_{d,t} - 1).
+\]
+
+The weight \(\omega_{u \to d}\) is defined from the upstream supplier's perspective: the share of upstream industry \(u\)'s sales going to downstream industry \(d\). This distinction is central because the project studies pressure transmitted to upstream suppliers, not the downstream industry's input composition.

@@ -8,9 +8,17 @@ Main Stata entry point for the project.
 Recommended use:
   StataMP-64.exe /e do 03_code/stata/main.do
 
-This file is intentionally conservative at project setup time. Add data
-construction, baseline regressions, robustness checks, and table exports here
-once the data paths and variable definitions are fixed.
+This file is intentionally conservative at project setup time. The current
+research design has six empirical layers:
+
+  1. Wang-style markup and credit subsidy benchmark.
+  2. Downstream input-demand wedge measurement.
+  3. Buyer-power validation for the wedge.
+  4. IO-based upstream exposure construction.
+  5. Upstream stress and policy targeting regressions.
+  6. Policy effectiveness and trade-off regressions.
+
+Add executable code only after the data paths and variable definitions are fixed.
 */
 
 local project_root : env PROJECT_ROOT

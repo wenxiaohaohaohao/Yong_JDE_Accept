@@ -1,10 +1,32 @@
 # TODO
 
-## 近期任务
+## 当前完成标准
+
+近期工作的目标不是直接写完整 welfare model，而是先完成可检验的六层证据链。只有在 Table 3、Table 5 和 Table 6 成立后，论文才适合从谨慎标题升级为 buyer power / supply-chain finance / industrial policy 主线。
+
+## 近期任务：资料与变量
 
 - [ ] 整理现有 PDF 到 `01_literature/`，并为每篇文献写 5-10 行笔记。
-- [ ] 修复或重新导出 `supply_chain_buyer_power_project_summary.tex` 的编码问题。
+- [ ] 将旧 summary 文件只作为历史材料引用，不再把旧版较短表格框架当作当前方案。
 - [ ] 明确核心数据来源、年份范围、firm/industry 层级和关键变量定义。
-- [ ] 把 baseline empirical design 写入 `03_code/stata/main.do`。
-- [ ] 在 `05_paper/sections/data.tex` 中写清楚数据与变量。
+- [ ] 固定行业分类、IO 表版本、税调行业代码和 concordance 方案。
+- [ ] 固定变量命名：`psi_x_d_t`、`omega_u_to_d`、`upstream_exposure_u_t`、`credit_subsidy_i_t`、`policy_support_i_u_t`。
 
+## 近期任务：六层证据链
+
+- [ ] Table 1：复刻 Wang-style markup 与 credit subsidy 的基准事实。
+- [ ] Table 2：构造并报告 downstream `input-demand wedge` 的分布和行业异质性。
+- [ ] Table 3A：检验 wedge 是否与 downstream concentration / buyer size 相关。
+- [ ] Table 3B：检验 wedge 是否在 supplier fragmentation 更高处更强。
+- [ ] Table 3C：检验 wedge 是否对应 accounts receivable、AR days 或 payment pressure。
+- [ ] Table 4：检验高 `upstream_exposure` 上游企业是否有更强现金流、融资费用、账期或投资压力。
+- [ ] Table 5：检验政策性信贷是否流向高 exposure 上游，并控制自身 `markup_u_t`。
+- [ ] Table 6A：检验政策性信贷是否改善高 exposure 上游的现金流、投资、R&D、创新或生存。
+- [ ] Table 6B：检验 trade-off，包括 payment persistence、buyer dependence 或 zombie-firm 风险。
+
+## 近期任务：代码与论文
+
+- [ ] 把 baseline empirical design 写入 `03_code/stata/main.do` 和各模块 `.do` 文件。
+- [ ] 在 `05_paper/sections/data.tex` 中写清楚数据与变量。
+- [ ] 在 `05_paper/sections/empirics.tex` 中写清楚 Table 1-6B 的识别逻辑。
+- [ ] 只有在 Table 6 结果可用后，才在论文中使用强政策有效性表述。
