@@ -268,32 +268,32 @@ Without this step, the project is only about industry-level wedge measurement. W
 
 ## 8. Relationship to Liu
 
-Liu’s mechanism:
+Liu (2019) should not be narrowed to a financial-friction paper. Its core mechanism is more general:
 
 ```text
-downstream financial friction
-→ downstream demand for upstream intermediates is too low
-→ upstream sectors may be under-expanded
-→ upstream subsidies can be second-best
+general sectoral distortions / market imperfections
+→ distortions accumulate through input-output linkages
+→ distortion-central sectors, often upstream, become optimal policy targets
+→ sectoral industrial policy can be characterized by sufficient-statistic logic
 ```
 
 This project’s analogous mechanism:
 
 ```text
-downstream buyer-power-related input-demand wedge
-→ upstream suppliers face lower demand, worse payment terms, or weaker cash flow
-→ upstream investment and supply capacity may be too low
-→ preferential credit or supply-chain finance may mitigate upstream constraints
+downstream input-demand wedge / buyer-side distortion
+→ IO linkages map this distortion into upstream exposure
+→ high-exposure upstream firms face financing, payment, and investment pressure
+→ preferential credit or policy support may respond to and mitigate this exposure
 ```
 
 Important distinction:
 
 ```text
-Liu’s friction is downstream financial friction.
-This project’s friction is buyer-power-related input-demand wedge or payment friction.
+Liu studies general market imperfections and optimal sectoral policy in production networks.
+This project studies a specific measurable friction: buyer-side input-demand wedge and payment-related distortion.
 ```
 
-The project can borrow the structure of “downstream friction propagates upstream,” but should not claim the same friction as Liu.
+The project can borrow Liu’s production-network policy logic, but it should not claim that Liu is only about financial frictions. The empirical contribution here is to measure one concrete buyer-side distortion, map it through IO linkages, and test whether real credit allocation and firm outcomes respond to the resulting upstream exposure.
 
 ---
 
@@ -703,16 +703,16 @@ Chinese:
 Stronger title after validation:
 
 ```text
-Buyer Power and Supply-Chain Finance in Domestic Production Networks
+Buyer-Side Distortions and Credit Allocation in Production Networks
 ```
 
 Chinese:
 
 ```text
-供应链金融、买方势力与生产网络中的上游错配
+买方侧扭曲、信贷配置与生产网络中的上游错配
 ```
 
-Use the cautious title until the buyer-power interpretation and policy relevance are empirically supported.
+Use the cautious title until the buyer-power interpretation and policy relevance are empirically supported. Do not use a supply-chain-finance-centered title unless the final evidence shows SCF is the empirically dominant policy tool; even then, SCF should be framed as a policy response variable, not the research object.
 
 ---
 

@@ -23,3 +23,9 @@
 - 税收调查企业专利及引用被引用数据是最匹配 Table 6A innovation outcomes 的候选来源；下一步需要确认是否能用纳税人识别号、统一社会信用代码、组织机构代码或企业名称匹配 NTSD。
 - 中征应收款融资服务平台数据可作为 SCF 候选数据。当前本地样本只确认企业名单、资金方名单和地区字段；完整可用性取决于是否包含加入时间和逐笔交易字段。
 - 根据 `01_literature/DownPdf.pdf`，已有文章使用中征平台数据时核心变量是企业是否加入平台及加入时间，即 `platform access` / `ZZSC_i_t`，不是逐笔融资金额。因此本项目暂时只能把中征数据写为 `candidate SCF proxy`，不能写成 `actual SCF flow`。
+
+## 2026-05-25 Positioning correction
+
+- 修正 Liu (2019) 定位：Liu 不是只研究金融摩擦，而是研究一般性市场不完善或部门扭曲如何通过投入产出联系累积，并影响最优部门性产业政策。
+- 修正 SCF 定位：供应链金融和中征平台不是主 treatment，而是观察供应链金融是否成为一种政策工具的辅助数据源。
+- 固定当前变量层级：主政策变量是 `credit_subsidy_i_t`；辅助政策变量是 `policy_support_i_u_t`；候选扩展变量是 `scf_access_i_t`；最强但未确认变量是 `scf_amount_i_t`。

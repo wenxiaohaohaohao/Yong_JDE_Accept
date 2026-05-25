@@ -2,15 +2,15 @@
 
 This file tracks variable definitions before they enter formal code and paper text.
 
-Data Feasibility Audit update: 2026-05-25. The SCF variables below reflect the current audit boundary: platform access is confirmed as a candidate concept, while actual financing requires full transaction fields.
+Data Feasibility Audit update: 2026-05-25. The SCF variables below reflect the current audit boundary: platform access is a supplementary candidate proxy for policy support, while actual financing requires full transaction fields. SCF variables must not replace the main `credit_subsidy_i_t` / `policy_support_i_u_t` design.
 
 | Variable | Level | Source | Definition | Construction Script | Status |
 |---|---|---|---|---|---|
 | `markup_i_t` | firm-year | tax survey / production data | Firm output markup following the Wang-style benchmark. Used as the main comparison mechanism, not the project's new mechanism. | `03_code/stata/02_construct_markup_credit_subsidy.do` | planned |
 | `markup_u_t` | upstream industry-year | aggregated from firm-level markups | Industry-level own markup for upstream industry `u`; included to separate upstream exposure from Wang-style high-markup allocation. | `03_code/stata/02_construct_markup_credit_subsidy.do` | planned |
 | `credit_subsidy_i_t` | firm-year | financial statements / tax survey | Preferential credit or financing subsidy measure. Exact construction follows the selected Wang replication design. | `03_code/stata/02_construct_markup_credit_subsidy.do` | planned |
-| `policy_support_i_u_t` | firm-year or industry-year | credit subsidy, SCF access, SCF transaction amount, policy text labels | Broad policy support indicator or intensity for firm `i` in upstream industry `u`. This is a layered concept: Wang-style credit subsidy, `scf_access_i_t`, transaction-level `scf_amount_i_t` if available, or city policy labels. Used in Table 5 and Table 6. | `03_code/stata/02_construct_markup_credit_subsidy.do`; `03_code/stata/05_regressions.do` | planned |
-| `scf_access_i_t` | firm-year | 中征应收款融资服务平台数据 | Indicator that firm `i` has joined the 中征平台 by year `t`. This measures platform access only; it is not actual financing and should not be interpreted as financing amount received. | `03_code/stata/05_regressions.do` | pending full variable dictionary |
+| `policy_support_i_u_t` | firm-year or industry-year | credit subsidy, policy labels, supplementary SCF access or SCF transaction amount | Broad policy support indicator or intensity for firm `i` in upstream industry `u`. Main versions should prioritize Wang-style credit subsidy or policy labels. `scf_access_i_t` and transaction-level `scf_amount_i_t` are supplementary proxies only if data allow. Used in Table 5 and Table 6. | `03_code/stata/02_construct_markup_credit_subsidy.do`; `03_code/stata/05_regressions.do` | planned |
+| `scf_access_i_t` | firm-year | 中征应收款融资服务平台数据 | Supplementary indicator that firm `i` has joined the 中征平台 by year `t`. This measures platform access only; it is not actual financing, not the main treatment, and should not be interpreted as financing amount received. | `03_code/stata/05_regressions.do` | pending full variable dictionary |
 | `zzsc_i_t` | firm-year | 中征应收款融资服务平台数据 / DownPdf.pdf convention | Alternative name used in the DownPdf.pdf article for joining the 中征平台. Use only if the project follows that article's naming convention. | `03_code/stata/05_regressions.do` | pending full variable dictionary |
 | `scf_join_year_i` | firm | 中征应收款融资服务平台数据 | First year in which firm `i` joined the 中征平台. Required to construct `scf_access_i_t` or `zzsc_i_t`. | `03_code/stata/05_regressions.do` | pending full variable dictionary |
 | `scf_amount_i_t` | firm-year | 中征应收款融资服务平台 transaction records | Annual receivable-financing amount obtained through the 中征平台. Use only if full transaction data include financing date, amount, and firm identifiers. | `03_code/stata/05_regressions.do` | pending full transaction fields |
@@ -45,7 +45,8 @@ Data Feasibility Audit update: 2026-05-25. The SCF variables below reflect the c
 - Do not call `psi_x_d_t` a pure markdown unless Table 3 validation supports buyer-power interpretation.
 - Construct upstream exposure with sales-destination weights from the upstream industry's perspective: `omega_u_to_d = z_d_u / sum_d z_d_u`.
 - Keep Table 5 variables separate from Table 6 variables: targeting is allocation, effectiveness is outcome response.
-- Treat `scf_access_i_t` as `platform access` only. It is not `actual financing`, `SCF flow`, or `financing amount received`.
+- Treat `scf_access_i_t` as supplementary `platform access` only. It is not the main treatment, `actual financing`, `SCF flow`, or `financing amount received`.
 - Use `scf_amount_i_t` only if the full 中征平台 data contain transaction-level financing date, amount, creditor, debtor or core-enterprise identifiers.
+- Do not let SCF variables define the paper. The core empirical chain is `psi_x_d_t` -> `upstream_exposure_u_t` -> upstream stress -> credit allocation / policy response.
 
 Use this file as the single place to settle names, units, sample restrictions, winsorization rules, and industry mapping choices before implementing them in Stata.

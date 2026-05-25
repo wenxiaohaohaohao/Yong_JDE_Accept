@@ -8,9 +8,11 @@
 中国国内生产网络
 + 下游买方势力 / input-demand wedge
 + 上游供应商融资与投资压力
-+ 政策性信贷 / 供应链金融
++ 政策性信贷配置
 + 产业政策有效性
 ```
+
+供应链金融和中征平台数据只作为候选政策工具或辅助政策变量，不是论文的核心研究对象，也不是基准 treatment。
 
 因此，**不建议优先投 Journal of International Economics (JIE)**。除非重新引入国际贸易、进口中间品、全球供应链或贸易政策，否则 JIE 不是自然目标。
 
@@ -108,7 +110,7 @@ developing economy
 + industrial policy
 + firm-level administrative data
 + production networks
-+ financial frictions
++ sectoral distortions / firm finance
 + policy effectiveness
 ```
 
@@ -117,7 +119,7 @@ developing economy
 - 中国税调数据；
 - 企业层面信贷、财务、账款、投资变量；
 - 生产网络中的上游暴露；
-- 政策性信贷或供应链金融；
+- 政策性信贷配置；供应链金融仅作为候选政策工具；
 - 产业政策配置和效果。
 
 ### JDE 版本应突出什么
@@ -588,8 +590,8 @@ output markup 高
 
 值得的原因：
 
-1. Wang 已经证明优惠信贷与 high-markup sectors 有关；你可以提供不同的政策逻辑：生产网络中的上游暴露与供应链金融/信贷配置。
-2. Liu 的生产网络产业政策框架说明，下游摩擦可以通过网络向上游传导并改变最优政策对象；你的项目用 buyer-power/payment friction 替代其金融摩擦。
+1. Wang 已经证明优惠信贷与 high-markup sectors 有关；你可以提供不同的政策逻辑：生产网络中的上游暴露与信贷配置。
+2. Liu 的生产网络产业政策框架说明，一般性市场不完善或部门扭曲可以通过投入产出联系累积，并改变最优部门性政策对象；你的项目研究其中一个更具体、可测度的 buyer-side distortion。
 3. Morlacco-style input markdown / input-demand wedge 提供了可测度对象，不是泛泛讲供应链摩擦。
 4. 中国税调数据到 2020 年可以连接企业财务、信贷、应收账款、投资和政策性信贷，数据潜力足够。
 
@@ -624,14 +626,16 @@ Input-Demand Wedges and Credit Allocation in Domestic Production Networks
 如果 Table 6 很强，可以升级为：
 
 ```text
-Buyer Power, Supply-Chain Finance, and Industrial Policy in Production Networks
+Buyer-Side Distortions and Credit Allocation in Production Networks
 ```
 
 中文：
 
 ```text
-买方势力、供应链金融与生产网络中的产业政策
+买方侧扭曲、信贷配置与生产网络中的产业政策
 ```
+
+不建议把升级标题写成 `Buyer Power, Supply-Chain Finance, and Industrial Policy in Production Networks`。该标题会把项目误导成供应链金融政策评估文章，并弱化与 Liu (2019) 的区分。
 
 ---
 
