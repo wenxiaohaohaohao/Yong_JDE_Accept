@@ -16,6 +16,11 @@
 - `01_literature/JonesAEJM2011.pdf`
 - `01_literature/shanghai200.pdf`
 - `01_literature/markupsmisallocation.pdf`
+- `01_literature/a_model_of_chinas_economic_vertical_structure.pdf`
+- `01_literature/上游国有企业对下游民营企业生产率的影响研究_刘青.pdf`
+- `01_literature/1-s2.0-S0022199621000222-main.pdf`
+- `06_notes/vertical_structure_article_project_use_notes.md`
+- `06_notes/upstream_soe_paper_project_use_notes.md`
 
 ## 1. 当前项目定位
 
@@ -35,11 +40,22 @@
 
 当前最稳妥的论文问题是：
 
-> 政策性信贷是否缓解了由下游采购端 input-demand wedge 经生产网络传导而来的上游融资与投资压力？
+> 政策性信贷及相关政策工具是否回应并缓解了由下游采购端 input-demand wedge 经生产网络传导而来的上游融资、账期和投资压力，即上游错配？
 
 对应英文表述：
 
 > Does preferential credit mitigate upstream financing and investment pressures induced by downstream buyer-power-related input-demand wedges in domestic production networks?
+
+标准主轴：
+
+```text
+downstream input-demand wedge / buyer-side distortion
+-> upstream exposure through IO linkages
+-> upstream cash-flow, payment, and investment pressure, i.e. upstream misallocation
+-> preferential credit / SCF-type tools as policy responses that may target and mitigate this misallocation
+```
+
+在完成 buyer-power validation 前，正式称谓仍为 `downstream input-demand wedge` 或 `buyer-side distortion`；`markdown` 只能作为通过验证后的经济解释。SCF-type tools 只是政策反应变量之一，不是基准 treatment。
 
 这一定义包含两个约束：
 
@@ -134,7 +150,7 @@ Z_{d,u} / sum_{u'} Z_{d,u'}
 
 ### 4.1 主研究问题
 
-在中国国内生产网络中，作为中间品买方的下游行业是否存在可测度的 input-demand wedge；这些下游 wedge 是否通过 IO 联系造成上游供应商的现金流、账期和投资压力；政策性信贷是否流向这些高暴露上游部门，并进一步改善其融资、投资和生存表现？
+在中国国内生产网络中，作为中间品买方的下游行业是否存在可测度的 input-demand wedge；这些下游 wedge 是否通过 IO 联系造成上游供应商的现金流、账期和投资压力，即上游错配；政策性信贷及相关政策工具是否流向这些高暴露上游部门，并进一步改善其融资、投资和生存表现？
 
 ### 4.2 FINER 评估
 
@@ -159,7 +175,7 @@ Z_{d,u} / sum_{u'} Z_{d,u'}
 
 ### 4.4 去供应链金融中心化的定位修正
 
-当前项目不能被写成一篇供应链金融政策评估文章。供应链金融只是中国政策场景中的一个可观测工具，而不是论文的核心研究对象。论文的核心应保持为：下游 input-demand wedge / buyer-side distortion 是否通过投入产出网络传导为上游融资、账期和投资压力，以及政策性信贷是否回应并缓解这种上游暴露。
+当前项目不能被写成一篇供应链金融政策评估文章。供应链金融只是中国政策场景中的一个可观测工具，而不是论文的核心研究对象。论文的核心应保持为：下游 input-demand wedge / buyer-side distortion 是否通过投入产出网络传导为上游融资、账期和投资压力，即上游错配，以及政策性信贷是否回应并缓解这种错配。
 
 与 Liu (2019) 的区别在于，Liu 从理论上研究一般性市场不完善如何通过生产网络累积并影响最优部门性产业政策；本文则研究一个更具体、可测度的摩擦：下游投入需求楔子和与支付相关的买方侧扭曲。本文不是预设上游部门应被支持，而是先测度下游 wedge，再通过 IO 表将其映射为上游暴露度，并检验现实中的信贷配置和企业结果是否对这种暴露作出反应。
 
@@ -172,6 +188,36 @@ Z_{d,u} / sum_{u'} Z_{d,u'}
 | 政策对象 | distortion-central sectors，常常偏上游 | 暴露于高-wedge 下游的上游企业/行业 |
 | 政策工具 | 抽象 subsidy / industrial policy | preferential credit / credit subsidy；SCF 只是候选工具之一 |
 | 贡献性质 | 理论 sufficient statistic / optimal policy logic | 中国企业数据 + IO 表 + 信贷配置与企业结果 |
+
+### 4.5 新增文献定位，2026-05-28
+
+本轮新增三篇文献后，当前主轴不变：
+
+```text
+downstream input-demand wedge
+-> upstream exposure through IO linkages
+-> upstream stress / misallocation
+-> preferential credit response and policy effectiveness
+```
+
+它们的正确位置如下。
+
+| 文献 | 主要内容 | 对本项目的用途 | 边界 |
+|---|---|---|---|
+| Li, Liu, Lu and Wang（2026） | China vertical structure：upstream SOE dominance / monopoly、downstream private competition、SOE credit subsidy 的 second-best 含义 | 理论背景；说明中国上游行业更可能有 SOE dominance、HHI、markup 和 credit subsidy；支持政策性信贷可能存在 second-best logic | 不能把本文写成 upstream SOE monopoly + credit subsidy 文章 |
+| 刘青、王俊力、占超群（2026） | 上游国有企业存在度如何影响下游民营企业 TFP | 中国 IO 网络实证写法；提醒控制 upstream SOE share、SOE HHI、SOE policy support、地方金融挤出 | 该文方向是上游 -> 下游；本文方向是下游 wedge -> 上游 exposure |
+| Chor, Manova and Yu（2021） | 中国企业 GVC production-line position、import upstreamness、export position 和生产阶段跨度 | `upstreamness` 与 production-chain position 的构造参考；提醒控制 firm productivity、export exposure、processing trade 和 GVC upgrading | 该文不是政策性信贷文献，不能替代本文机制 |
+
+因此，本文需要新增一组识别约束：
+
+```text
+upstream_exposure_u_t must not be a proxy for
+China vertical structure,
+upstream SOE monopoly,
+GVC upgrading,
+firm lifecycle dynamics,
+or processing-trade exposure.
+```
 
 ## 5. 六层证据链
 
@@ -344,6 +390,14 @@ Stress_{i,u,t}
 - `exit`；
 - 可选：`rd_sales`、`patent_count`、`new_product_sales`。
 
+新增控制和替代机制，2026-05-28：
+
+- `upstreamness_u`：排除结果只是由行业自然上游程度驱动。
+- `upstream_soe_share_u_t`、`upstream_hhi_u_t`、`upstream_soe_hhi_u_t`：排除 China vertical structure、SOE dominance 或 upstream monopoly 解释。
+- `upstream_profit_margin_u_t`、`markup_u_t`：排除 Wang-style high-markup mechanism。
+- `upstream_export_exposure_u_t`、`gvc_position_i_t` 或相关 proxy：排除 GVC upgrading、foreign demand shock 或企业生产线位置变化。
+- `firm_productivity_i_t`、`firm_size_i_t`、`firm_age_i_t`：排除企业生命周期和规模扩张机制。
+
 ### Table 5：policy targeting
 
 问题：
@@ -357,6 +411,7 @@ CreditSubsidy_{i,u,t}
   = beta * Exposure_{u,t-1}
   + gamma * Markup_{u,t-1}
   + delta * Centrality_u
+  + phi * StructureControls_{u,t-1}
   + X_{i,u,t-1}
   + firm or industry FE
   + year FE
@@ -368,6 +423,7 @@ CreditSubsidy_{i,u,t}
 - `beta > 0` 说明存在 upstream exposure targeting；
 - `gamma` 是 Wang 机制；
 - `Centrality` 区分 weak links / network centrality；
+- `StructureControls` 包括 upstreamness、upstream SOE share、upstream HHI、upstream SOE HHI、export exposure 和 GVC-position controls；
 - Table 5 只证明政策流向，不证明政策有效。
 
 ### Table 6A：policy effectiveness
@@ -474,11 +530,25 @@ payment persistence / supplier dependence
 | wedge 不等于 buyer power | 会削弱主机制 | 统一称为 input-demand wedge；用 Table 3 验证解释 |
 | IO 权重方向错误 | exposure 构造无效 | 使用 `Z_{d,u} / sum_d Z_{d,u}`；在代码中写明 |
 | Wang 机制混淆 | 政策可能只投向 high markup | Table 5 必须控制自身 output markup |
+| China vertical structure 混淆 | high exposure 上游可能本身就是 SOE-heavy、HHI 高、markup 高的上游部门 | 控制 `upstreamness_u`、`upstream_soe_share_u_t`、`upstream_hhi_u_t`、`upstream_soe_hhi_u_t`、`upstream_profit_margin_u_t` |
+| 上游 SOE 政策溢出混淆 | 信贷配置可能反映上游国企政策扶持，而不是 downstream wedge 暴露 | 构造或控制 `upstream_soe_policy_exposure_u_t`、SOE subsidy / tax preference / interest advantage |
+| GVC upgrading 混淆 | 上游压力或资源流向可能来自企业 production-line upgrading、外需冲击或 processing trade | 控制 `upstream_export_exposure_u_t`、firm productivity、firm size、firm age、processing-trade proxy、industry-year shocks |
 | network centrality 混淆 | 政策可能支持中心行业而非 high exposure | 控制 upstreamness、centrality、Leontief influence |
 | 政策内生选择 | 政策投向本来会改善的企业 | 使用滞后变量、firm FE、province-year FE、政策窗口或试点 |
 | Table 5 不等于有效性 | 只能说明 targeting | 必须做 Table 6 |
 | 账期机制改写主线 | 容易变成另一篇文章 | 账期只作为 validation、stress 和 trade-off，不替代主线 |
 | SCF 改写主线 | 容易变成中征平台或供应链金融文章 | SCF 只作为候选 policy proxy；主线仍是 wedge、exposure 和 credit allocation |
+
+### 8.1 Robustness and competing mechanisms, 2026-05-28
+
+新增文献要求后续 robustness 至少覆盖四组竞争机制：
+
+| 竞争机制 | 需要排除的问题 | 设计 |
+|---|---|---|
+| upstream SOE monopoly / China vertical structure | `upstream_exposure_u_t` 是否只是上游国企垄断、上游 HHI 或高 markup 的 proxy | 在 Table 4-6 中加入 upstreamness、SOE share、SOE HHI、HHI、profit margin、own markup；做高低 SOE share 分组 |
+| upstream SOE policy spillover | 政策性信贷是否只是流向被扶持的 SOE-intensive 上游行业 | 控制 SOE subsidy / tax preference / interest advantage；构造 `upstream_soe_policy_exposure_u_t` 后检验 exposure 系数是否仍存在 |
+| GVC upgrading / production-line position | 上游企业结果是否来自进口更 upstream、出口更 downstream 或承担更多生产阶段 | 控制 export exposure、processing-trade proxy、firm productivity、firm size、firm age；如果有海关数据，加入 `import_upstreamness_i_t`、`export_upstreamness_i_t` 或 `production_stage_span_i_t` |
+| generic network centrality | 政策是否支持网络中心行业，而不是高 downstream-wedge exposure 行业 | 控制 upstreamness、Leontief influence、sales centrality、input centrality；比较 `upstream_exposure_u_t` 与 centrality 的解释力 |
 
 ## 9. 期刊目标
 
@@ -561,9 +631,10 @@ downstream input-demand wedge
 3. 估计中间投入 revenue elasticity，构造 `psi_x_d_t`，生成 Table 2。
 4. 构造 downstream concentration、large-firm share、supplier fragmentation 和 payment-pressure variables，生成 Table 3A-3C。
 5. 建立税调行业与 IO 行业映射，使用正确方向构造 `omega_u_to_d` 和 `upstream_exposure_u_t`。
-6. 检验 exposure 是否预测上游 stress，生成 Table 4。
-7. 检验 credit subsidy 是否响应 exposure，并控制自身 markup，生成 Table 5。
-8. 若 Table 4-5 支持机制，进入 Table 6A-6B，检验政策效果和 trade-off。
+6. 构造核心控制变量：`upstreamness_u`、`upstream_soe_share_u_t`、`upstream_hhi_u_t`、`upstream_soe_hhi_u_t`、`upstream_export_exposure_u_t` 和 firm lifecycle controls。
+7. 检验 exposure 是否预测上游 stress，生成 Table 4。
+8. 检验 credit subsidy 是否响应 exposure，并控制自身 markup、vertical-structure controls、SOE-policy controls 和 network centrality，生成 Table 5。
+9. 若 Table 4-5 支持机制，进入 Table 6A-6B，检验政策效果和 trade-off。
 
 ## 13. 当前结论
 

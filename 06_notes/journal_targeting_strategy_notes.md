@@ -40,7 +40,7 @@ Development / industrial policy / production networks / firm finance paper
 
 核心研究问题应写成：
 
-> 政策性信贷是否缓解了由下游采购端 wedge 经生产网络传导而来的上游融资与投资压力？
+> 政策性信贷及相关政策工具是否回应并缓解了由下游采购端 wedge 经生产网络传导而来的上游融资、账期和投资压力，即上游错配？
 
 或者英文：
 
@@ -580,6 +580,18 @@ output markup 高
 政策性信贷是否缓解了一种由下游买方势力通过生产网络传导出来的上游错配
 ```
 
+### 9.1 2026-05-28 新增文献后的审稿压力
+
+新增三篇文献后，JDE / AEJ Policy 版本必须更清楚地区分本文与以下竞争机制：
+
+| 竞争机制 | 代表文献 | 对本文的压力 | 必要处理 |
+|---|---|---|---|
+| upstream SOE monopoly + credit subsidy | Li, Liu, Lu and Wang（2026） | 审稿人可能认为本文只是 China vertical structure 的经验版本 | 控制 upstreamness、SOE share、HHI、SOE HHI、own markup、profit margin |
+| upstream SOE spillover | 刘青、王俊力、占超群（2026） | 审稿人可能认为信贷配置来自上游 SOE 政策扶持，而不是 downstream wedge exposure | 控制 SOE policy support、SOE subsidy / tax / interest advantage、local financial crowding-out |
+| GVC upgrading / production-line position | Chor, Manova and Yu（2021） | 审稿人可能认为上游企业结果来自 productivity lifecycle、foreign demand 或 processing trade | 控制 firm productivity、firm size、firm age、export exposure、processing-trade 或 GVC-position proxy |
+
+如果这些 competing mechanisms 没有被处理，文章即使 Table 4-5 成立，也更像一篇相关性较强的中国制度背景文章，而不是可以冲 JDE / AEJ Policy 的生产网络政策文章。
+
 ---
 
 ## 10. 是否值得花一年
@@ -604,7 +616,7 @@ markup + markdown + network + supply-chain finance + innovation + zombie + welfa
 一年内应集中在一个主问题：
 
 ```text
-政策性信贷是否缓解了由下游采购端 wedge 经生产网络传导而来的上游融资与投资压力？
+政策性信贷及相关政策工具是否回应并缓解了由下游采购端 wedge 经生产网络传导而来的上游融资、账期和投资压力，即上游错配？
 ```
 
 ---

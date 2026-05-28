@@ -12,6 +12,8 @@
 - `research_question_empirical_blueprint.md`：最新研究问题和六层实证蓝图。
 - `project_progress_notes_input_wedge_network_credit.md`：input-demand wedge、IO upstream exposure、credit allocation 和 policy effectiveness 的最新机制说明。
 - `journal_targeting_strategy_notes.md`：JDE / AEJ Policy / EJ / JPubE / IJIO 等目标期刊和一年期项目定位。
+- `upstream_soe_paper_project_use_notes.md`：刘青、王俊力、占超群（2026）的项目用途说明。该文用于中国 IO 网络实证写法、upstream SOE 替代机制和控制变量设计，不改变本文下游 wedge -> 上游 exposure 的主轴。
+- `vertical_structure_article_project_use_notes.md`：Li, Liu, Lu and Wang（2026）vertical structure 文献的项目用途说明。该文用于 China vertical structure、second-best credit policy 和竞争性机制定位，不把本文改写为 upstream SOE monopoly 文章。
 
 建议把可以进入论文或代码的内容及时迁移到 `05_paper/` 或 `03_code/`，避免长期只停留在 notes。
 

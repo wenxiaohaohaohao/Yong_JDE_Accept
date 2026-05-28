@@ -6,29 +6,29 @@ The project should not be framed as “supply-chain finance corrects markdowns�
 
 The current, safer, and more promising framing is:
 
-> This paper studies whether preferential credit mitigates upstream financing and investment pressures induced by downstream buyer-power-related input-demand wedges in domestic production networks.
+> This paper studies whether preferential credit and related policy tools respond to and mitigate upstream cash-flow, payment, and investment pressures induced by downstream buyer-side input-demand wedges in domestic production networks.
 
 In Chinese:
 
-> 本文研究政策性信贷是否缓解了由下游采购端楔子通过国内生产网络传导而来的上游融资与投资压力。
+> 本文研究政策性信贷及相关政策工具是否回应并缓解了由下游采购端楔子通过国内生产网络传导而来的上游融资、账期和投资压力，即上游错配。
 
 The project should proceed from a measurable mechanism:
 
 ```text
 Downstream input-demand wedge
 → upstream exposure through IO linkages
-→ upstream cash-flow / payment / investment pressure
-→ preferential credit allocation
-→ possible policy effectiveness
+→ upstream cash-flow / payment / investment pressure, i.e. upstream misallocation
+→ preferential credit / SCF-type tools as policy responses
+→ possible mitigation of this misallocation
 ```
 
 The first-stage claim should be modest:
 
 ```text
-We estimate industry-level input-demand wedges and test whether upstream sectors exposed to high-wedge downstream buyers face greater financial and investment pressure, and whether preferential credit responds to this exposure.
+We estimate industry-level input-demand wedges and test whether upstream sectors exposed to high-wedge downstream buyers face greater cash-flow, payment, and investment pressure, i.e. upstream misallocation, and whether preferential credit responds to and mitigates this exposure-induced misallocation.
 ```
 
-Only after validation should the paper use stronger language such as buyer power, markdown, or supply-chain finance as second-best policy.
+Only after validation should the paper use stronger language such as buyer power or markdown. SCF-type tools should remain policy response variables, not the research object.
 
 ---
 
@@ -294,6 +294,119 @@ This project studies a specific measurable friction: buyer-side input-demand wed
 ```
 
 The project can borrow Liu’s production-network policy logic, but it should not claim that Liu is only about financial frictions. The empirical contribution here is to measure one concrete buyer-side distortion, map it through IO linkages, and test whether real credit allocation and firm outcomes respond to the resulting upstream exposure.
+
+---
+
+## 8A. Relationship to China's Vertical Structure Literature
+
+Li, Liu, Lu and Wang (2026) are a core reference, but also a competing paper. Their mechanism is:
+
+```text
+upstream SOE dominance / monopoly
++ downstream private competition
++ SOE credit subsidy
+-> second-best policy logic under upstream under-supply
+```
+
+This project should not enter that territory directly. The relevant distinction is:
+
+```text
+Li, Liu, Lu and Wang:
+upstream SOE monopoly -> under-supply -> SOE credit subsidy may be second-best
+
+This project:
+downstream input-demand wedge -> upstream exposure -> upstream stress -> credit allocation and effectiveness
+```
+
+The vertical-structure paper is useful for three reasons:
+
+- it provides the China institutional background that upstream sectors may be more SOE-intensive, concentrated, and high-markup;
+- it supports the idea that credit subsidies can have second-best meaning under network frictions;
+- it creates an identification threat: estimated `upstream_exposure_u_t` may be proxying for upstream SOE dominance or monopoly unless those controls are included.
+
+Therefore Table 4, Table 5, and Table 6 should include or test robustness to:
+
+```text
+upstreamness_u
+upstream_soe_share_u_t
+upstream_hhi_u_t
+upstream_soe_hhi_u_t
+markup_u_t
+upstream_profit_margin_u_t
+upstream_export_exposure_u_t
+```
+
+---
+
+## 8B. Relationship to Upstream SOE Spillover Evidence
+
+Liu, Wang and Zhan (2026) study the opposite network direction:
+
+```text
+upstream SOE presence
+-> downstream private-firm TFP
+```
+
+This is not the project mechanism. It is useful because it shows how Chinese firm data and IO tables can be combined to construct network exposure measures, and because it identifies concrete alternative mechanisms:
+
+- upstream SOE share;
+- upstream SOE HHI;
+- upstream SOE subsidy, tax preference, and interest advantage;
+- central versus local SOE differences;
+- local financial crowding-out.
+
+The implication for this project is not to copy their design. The implication is to show that:
+
+```text
+downstream-wedge exposure
+```
+
+has explanatory power after controlling for:
+
+```text
+upstream SOE structure
+upstream SOE policy support
+local financial crowding-out
+```
+
+---
+
+## 8C. Relationship to GVC Position and Upstreamness
+
+Chor, Manova and Yu (2021) are useful for production-line position and upstreamness. Their mechanism is:
+
+```text
+firm productivity / size / experience / foreign demand
+-> import upstreamness, export position, production-stage span
+-> input purchases, value added, fixed costs, assets, profits
+```
+
+This is not a policy-credit paper, but it matters for robustness. The project must rule out the interpretation that high upstream exposure or upstream outcomes are simply capturing:
+
+- GVC upgrading;
+- firm lifecycle dynamics;
+- foreign demand shocks;
+- processing trade exposure;
+- movement along production stages.
+
+If data allow, robustness should control:
+
+```text
+firm_productivity_i_t
+firm_size_i_t
+firm_age_i_t
+upstream_export_exposure_u_t
+processing_trade_proxy_i_t
+gvc_position_i_t
+```
+
+If customs data are available later, more direct variables can be constructed:
+
+```text
+import_upstreamness_i_t
+export_upstreamness_i_t
+production_stage_span_i_t
+```
 
 ---
 
@@ -644,6 +757,15 @@ Purpose:
 Do upstream sectors exposed to high-wedge downstream buyers face stronger cash-flow, payment, or investment pressure?
 ```
 
+Required controls after the 2026-05-28 literature update:
+
+- upstreamness;
+- upstream SOE share;
+- upstream HHI and SOE HHI;
+- own upstream markup and profit margin;
+- export exposure or GVC-position proxy;
+- firm productivity, size, and age in firm-level specifications.
+
 ### Table 5: Policy targeting
 
 Purpose:
@@ -651,6 +773,8 @@ Purpose:
 ```text
 Does preferential credit flow to high-exposure upstream sectors beyond their own output markup?
 ```
+
+This table must show that exposure targeting survives not only own markup, but also China vertical-structure controls, upstream SOE policy controls, and generic network centrality.
 
 ### Table 6A: Policy effectiveness
 
@@ -675,13 +799,13 @@ Does policy support improve financing while AR days or payment dependence persis
 Chinese version:
 
 ```text
-本文研究政策性信贷是否缓解了由下游采购端楔子通过生产网络传导而来的上游融资与投资压力。具体而言，本文首先估计行业作为中间品买方时的 input-demand wedge，并通过行业集中度、大买方规模、供应商分散度和账期压力验证其 buyer-power interpretation；随后利用投入产出表将下游买方 wedge 映射为上游行业暴露度，检验暴露于高-wedge 下游的上游企业是否面临更强现金流、账期和投资压力；最后考察政策性信贷是否流向这些高暴露上游部门，并进一步改善其融资、投资和生存表现。
+本文研究政策性信贷及相关政策工具是否回应并缓解了由下游采购端楔子通过生产网络传导而来的上游融资、账期和投资压力，即上游错配。具体而言，本文首先估计行业作为中间品买方时的 input-demand wedge，并通过行业集中度、大买方规模、供应商分散度和账期压力验证其 buyer-power interpretation；随后利用投入产出表将下游买方 wedge 映射为上游行业暴露度，检验暴露于高-wedge 下游的上游企业是否面临更强现金流、账期和投资压力；最后考察政策性信贷是否流向这些高暴露上游部门，并进一步改善其融资、投资和生存表现。
 ```
 
 English version:
 
 ```text
-This paper studies whether preferential credit mitigates upstream financing and investment pressures induced by downstream buyer-power-related input-demand wedges in domestic production networks. We first estimate industry-level input-demand wedges when industries act as intermediate-input buyers and validate their buyer-power interpretation using downstream concentration, buyer size, supplier fragmentation, and payment-pressure measures. We then use input-output linkages to map downstream buyer wedges into upstream exposure and test whether exposed upstream firms face tighter cash-flow, payment, and investment constraints. Finally, we examine whether preferential credit is allocated toward these exposed upstream sectors and whether such credit support improves their real and financial outcomes.
+This paper studies whether preferential credit and related policy tools respond to and mitigate upstream cash-flow, payment, and investment pressures induced by downstream buyer-side input-demand wedges in domestic production networks. We first estimate industry-level input-demand wedges when industries act as intermediate-input buyers and validate their buyer-power interpretation using downstream concentration, buyer size, supplier fragmentation, and payment-pressure measures. We then use input-output linkages to map downstream buyer wedges into upstream exposure and test whether exposed upstream firms face tighter cash-flow, payment, and investment constraints. Finally, we examine whether preferential credit is allocated toward these exposed upstream sectors and whether such credit support improves their real and financial outcomes.
 ```
 
 ---

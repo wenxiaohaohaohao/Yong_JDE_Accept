@@ -29,3 +29,12 @@
 - 修正 Liu (2019) 定位：Liu 不是只研究金融摩擦，而是研究一般性市场不完善或部门扭曲如何通过投入产出联系累积，并影响最优部门性产业政策。
 - 修正 SCF 定位：供应链金融和中征平台不是主 treatment，而是观察供应链金融是否成为一种政策工具的辅助数据源。
 - 固定当前变量层级：主政策变量是 `credit_subsidy_i_t`；辅助政策变量是 `policy_support_i_u_t`；候选扩展变量是 `scf_access_i_t`；最强但未确认变量是 `scf_amount_i_t`。
+
+## 2026-05-28 Literature integration
+
+- 新增并定位三篇文献：Li, Liu, Lu and Wang（2026）China vertical structure；刘青、王俊力、占超群（2026）upstream SOE 对下游民企 TFP；Chor, Manova and Yu（2021）GVC production-line position。
+- 明确这些文献不改变项目主轴。当前主轴仍为 `downstream input-demand wedge -> upstream exposure -> upstream stress -> credit allocation / policy effectiveness`。
+- 将 Li, Liu, Lu and Wang（2026）定位为理论背景和竞争性文献：本文借鉴 vertical-structure 和 second-best credit policy 逻辑，但不写成 upstream SOE monopoly + credit subsidy 文章。
+- 将刘青、王俊力、占超群（2026）定位为中国 IO 网络实证写法和 upstream SOE 替代机制控制参考；其方向是上游 SOE 结构影响下游企业，与本文方向相反。
+- 将 Chor, Manova and Yu（2021）定位为 upstreamness、production-line position 和 GVC robustness 参考；它提醒后续需要排除 GVC upgrading、firm lifecycle dynamics、foreign demand 和 processing trade 解释。
+- 在变量字典和实证蓝图中预留 `upstreamness_u`、`upstream_soe_share_u_t`、`upstream_hhi_u_t`、`upstream_soe_hhi_u_t`、`upstream_soe_policy_exposure_u_t`、`gvc_position_i_t` 等控制和 robustness 变量。

@@ -4,7 +4,16 @@
 
 > Input-Demand Wedges, Upstream Exposure, and Credit Allocation in Domestic Production Networks.
 
-当前主问题是：政策性信贷是否缓解由下游采购端 `input-demand wedge` 经国内生产网络传导而来的上游融资与投资压力。
+当前主轴是：
+
+```text
+下游 input-demand wedge / buyer-side distortion
+-> 通过生产网络传导为 upstream exposure
+-> 上游供应商出现现金流、账期、投资压力，即 upstream misallocation
+-> 政策性信贷 / 供应链金融类工具是否回应并缓解这种错配
+```
+
+在完成 buyer-power validation 前，正式写法仍应使用 `downstream input-demand wedge` 或 `buyer-side distortion`，不要直接声称已识别纯粹 markdown。供应链金融类工具只是可能的政策反应变量，不是论文研究对象本身。
 
 这个表述故意保留谨慎边界。当前阶段的正确顺序是先构造事实链，再判断是否能够升级为 buyer power / supply-chain finance / industrial policy 的更强论文主线。
 
@@ -28,6 +37,15 @@
 - `01_literature/Market_Power_Inputs_2023.pdf`
 - `01_literature/markupsmisallocation.pdf`
 - `01_literature/shanghai200.pdf`
+- `01_literature/a_model_of_chinas_economic_vertical_structure.pdf`
+- `01_literature/上游国有企业对下游民营企业生产率的影响研究_刘青.pdf`
+- `01_literature/1-s2.0-S0022199621000222-main.pdf`
+
+新增文献的定位：
+
+- Li, Liu, Lu and Wang（2026）用于 China vertical structure 和 second-best credit policy 背景，同时提醒本文不能写成 upstream SOE monopoly + credit subsidy 文章。
+- 刘青、王俊力、占超群（2026）用于中国生产网络实证写法和 upstream SOE 替代机制控制；其网络方向是上游 SOE 影响下游民企，与本文方向相反。
+- Chor, Manova and Yu（2021）用于 `upstreamness`、production-line position、GVC upgrading 和 robustness 设计；它不是政策性信贷文献。
 
 ## 目录结构
 
@@ -50,12 +68,14 @@
 3. 构造行业作为买方时的 `input-demand wedge`，并检验其分布是否合理。
 4. 用 buyer-power primitives 验证 wedge 解释，包括下游集中度、大买方规模、供应商分散度和账期压力。
 5. 用投入产出表构造 `upstream exposure`，权重为上游行业销售给各下游行业的销售份额。
-6. 检验六层证据链：wedge measurement、buyer-power validation、upstream exposure、upstream stress、policy targeting、policy effectiveness。
-7. 在 `03_code/stata/main.do` 中组织正式 Stata 复现流程。
-8. 把生成的表格和图输出到 `04_results/tables/` 与 `04_results/figures/`。
-9. 在 `05_paper/main.tex` 中写论文，章节文件放在 `05_paper/sections/`。
-10. 用 `scripts/build_paper.ps1` 编译论文。
-11. 需要完整复现时，用 `scripts/run_pipeline.ps1` 串联 Stata 主程序和论文编译。
+6. 构造 vertical-structure、upstream SOE、GVC-position、firm lifecycle 和 network centrality 控制变量。
+7. 检验六层证据链：wedge measurement、buyer-power validation、upstream exposure、upstream stress、policy targeting、policy effectiveness。
+8. 做 robustness，确认结果不是 upstream SOE monopoly、GVC upgrading、processing trade、firm lifecycle 或 generic network centrality 驱动。
+9. 在 `03_code/stata/main.do` 中组织正式 Stata 复现流程。
+10. 把生成的表格和图输出到 `04_results/tables/` 与 `04_results/figures/`。
+11. 在 `05_paper/main.tex` 中写论文，章节文件放在 `05_paper/sections/`。
+12. 用 `scripts/build_paper.ps1` 编译论文。
+13. 需要完整复现时，用 `scripts/run_pipeline.ps1` 串联 Stata 主程序和论文编译。
 
 ## 当前证据链
 
